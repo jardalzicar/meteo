@@ -1,7 +1,7 @@
-meteo
+#meteo
 =====
 
-Domácí meteorologická stanice- maturitní projekt
+##Domácí meteorologická stanice- maturitní projekt
 
 30.9.- Prohlížel jsem si podobné projekty na instructables
 7.10.- Zvažuji možnost použít wifi modul místo bluetooth, našel jsem jeden docela levný na ebayi a sehnal 
