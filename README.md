@@ -11,3 +11,4 @@
 - 19.10- Senzory přišly, zapojil jsem je s arduinem a zobrazoval naměřené hodnoty tlaku, teploty
                   a vlhkosti vzduchu v konzoli obsažené v arduino IDE
 - 23.10- Přidal jsem fotky a zdroják pro arduino
+- 2.11.- Objednal jsem arduino a ethernet shield, upravoval jsem specifikaci

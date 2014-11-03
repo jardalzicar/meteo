@@ -5,6 +5,7 @@
 #include <DHT.h>
 
 #define DHTPIN 2
+#define VYSKA 275
 
 BMP085 dps = BMP085();   
 DHT dht(DHTPIN, DHT22);
@@ -19,8 +20,8 @@ void setup(void) {
   Serial.begin(9600);
   Wire.begin();
   dht.begin();
+  dps.init(MODE_ULTRA_HIGHRES, VYSKA*100, true); 
   delay(1000);
-  dps.init(MODE_ULTRA_HIGHRES, 27500, true); 
 
 }            
 
