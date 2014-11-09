@@ -10,7 +10,7 @@
 BMP085 dps = BMP085();   
 DHT dht(DHTPIN, DHT22);
 
-long temp0 = 0, pres0 = 0; 
+long temp0, pres0; 
 float temp, pres;
 float hum; 
 //float temp2;
@@ -26,11 +26,31 @@ void setup(void) {
 }            
 
 void loop(void) { 
+  temp0 = NULL;
+  pres0 = NULL;
  
   dps.getPressure(&pres0);
   dps.getTemperature(&temp0);
-  pres = (float) pres0/100;
-  temp = (float)temp0/10;
+  
+  if(pres0 != NULL){
+    pres = (float) pres0/100;
+  }
+  else{
+    Serial.println("Error reading pressure");
+    pres = NULL;
+  }
+  
+  if(temp0 != NULL){
+    temp = (float) temp0/10;
+  }
+  else{
+    Serial.println("Error reading temperature");
+    temp = NULL;
+  }
+  
+  
+
+
   
   hum = dht.readHumidity();
   //temp2 = dht.readTemperature();
@@ -38,8 +58,6 @@ void loop(void) {
   
   Serial.print("Teplota: ");
   Serial.print(temp);
-  //Serial.print(" Teplota 2: ");
-  //Serial.print(temp2);
   Serial.print(" C --- Vlhkost: ");
   Serial.print(hum);
   Serial.print("% --- Tlak : ");
