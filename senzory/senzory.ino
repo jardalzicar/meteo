@@ -1,67 +1,77 @@
 
-
+#include <SFE_BMP180.h>
 #include <Wire.h>
-#include <BMP085.h>
 #include <DHT.h>
 
+#define ALTITUDE 275
+#define INTERVAL 2000
 #define DHTPIN 2
-#define VYSKA 275
 
-BMP085 dps = BMP085();   
+SFE_BMP180 pressure;
 DHT dht(DHTPIN, DHT22);
 
-long temp0, pres0; 
-float temp, pres;
-float hum; 
-//float temp2;
-
-void setup(void) {
+char status;
+double T,P;
+float temp, pres, hum;
   
-  Serial.begin(9600);
-  Wire.begin();
-  dht.begin();
-  dps.init(MODE_ULTRA_HIGHRES, VYSKA*100, true); 
-  delay(1000);
-
-}            
-
-void loop(void) { 
-  temp0 = NULL;
-  pres0 = NULL;
+void setup(){
  
-  dps.getPressure(&pres0);
-  dps.getTemperature(&temp0);
-  
-  if(pres0 != NULL){
-    pres = (float) pres0/100;
-  }
-  else{
-    Serial.println("Error reading pressure");
-    pres = NULL;
-  }
-  
-  if(temp0 != NULL){
-    temp = (float) temp0/10;
-  }
-  else{
-    Serial.println("Error reading temperature");
-    temp = NULL;
-  }
-  
-  
-
-
-  
-  hum = dht.readHumidity();
-  //temp2 = dht.readTemperature();
-
-  
-  Serial.print("Teplota: ");
-  Serial.print(temp);
-  Serial.print(" C --- Vlhkost: ");
-  Serial.print(hum);
-  Serial.print("% --- Tlak : ");
-  Serial.print(pres);
-  Serial.println(" HPa");
+  Serial.begin(9600);
+  pressure.begin();
+  dht.begin();  
+ 
   delay(2000);
+}
+
+void loop(){
+  
+  temp=-999;
+  pres=-999;
+  
+  // Humidity measurement
+  hum = dht.readHumidity();
+  if(isnan(hum)){ 
+    hum = -999;
+    Serial.println("error retrieving pressure measurement");
+  }
+  
+  // Temperature measurement
+  status = pressure.startTemperature();
+  if (status != 0){
+    delay(status);
+    status = pressure.getTemperature(T);
+    
+    if (status != 0){  
+      temp = (float)T;
+    }
+    else Serial.println("error retrieving temperature measurement");  
+  }
+  else Serial.println("error starting temperature measurement");
+  
+  // Pressure measurement
+  status = pressure.startPressure(3);
+  if (status != 0 && temp != -999){      
+    delay(status);
+    status = pressure.getPressure(P,T);
+    
+    if (status != 0){
+      pres = (float)pressure.sealevel(P,ALTITUDE); 
+    }
+    else Serial.println("error retrieving pressure measurement");   
+  }
+  else Serial.println("error starting pressure measurement");
+
+  // Print values via serial (debugging only)     
+  Serial.print("temperature: ");
+  Serial.print(temp);
+  Serial.print(" C <> ");  
+  Serial.print("pressure: ");
+  Serial.print(pres);
+  Serial.print(" HPa <> ");
+  Serial.print("humidity: ");
+  Serial.print(hum);
+  Serial.println(" % ");
+  
+  //Wait between measurements
+  delay(INTERVAL); 
 }
