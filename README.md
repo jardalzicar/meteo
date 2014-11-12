@@ -12,5 +12,7 @@
                   a vlhkosti vzduchu v konzoli obsažené v arduino IDE
 - 23.10- Přidal jsem fotky a zdroják pro arduino
 - 2.11.- Objednal jsem arduino a ethernet shield, upravoval jsem specifikaci
-- 7.10.- Přišel ethernet  shield, zkoušel jsem posílat náhodná data z arduina do jednoduché php
+- 7.11.- Přišel ethernet  shield, zkoušel jsem posílat náhodná data z arduina do jednoduché php
          aplikace na mém počítači
+- 12.11.- Přes ethernet shield jsem posílal údaje ze senzorů do php aplikace, která zobrazovala
+-        výpis posledních 30 hodnot v tabulce (viz screenshot)
