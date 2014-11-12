@@ -15,4 +15,4 @@
 - 7.11.- Přišel ethernet  shield, zkoušel jsem posílat náhodná data z arduina do jednoduché php
          aplikace na mém počítači
 - 12.11.- Přes ethernet shield jsem posílal údaje ze senzorů do php aplikace, která zobrazovala
--        výpis posledních 30 hodnot v tabulce (viz screenshot)
+         výpis posledních 30 hodnot v tabulce (viz screenshot)
