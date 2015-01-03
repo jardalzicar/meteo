@@ -7,15 +7,15 @@
 #include <math.h>
 
 #define ALTITUDE 275
-#define INTERVAL 2000
+#define INTERVAL 5000
 #define DHTPIN 2
+
+EthernetClient client;
+byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x4B, 0x5F }; 
+char server[] = "192.168.1.10";
 
 SFE_BMP180 pressure;
 DHT dht(DHTPIN, DHT22);
-EthernetClient client;
-
-byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x4B, 0x5F }; 
-char server[] = "192.168.1.10";
 String data;
 int temp, hum, pres;
   
@@ -30,10 +30,7 @@ void setup(){
 }
 
 void loop(){
-  
-  temp=-999;
-  pres=-999;
-  
+
   hum=measureHumidity();
   temp=measureTemperature();
   pres=measurePressure(temp);
@@ -121,12 +118,12 @@ void sendToServer(char server[], int port, String data){
 // Print values via serial (debugging only) 
 void printValues(){
   Serial.print("temperature: ");
-  Serial.print(temp);
-  Serial.print(" C <> ");  
+  Serial.print(temp/100.0);
+  Serial.print(" C || ");  
   Serial.print("pressure: ");
-  Serial.print(pres);
-  Serial.print(" HPa <> ");
+  Serial.print(pres/10.0);
+  Serial.print(" HPa || ");
   Serial.print("humidity: ");
-  Serial.print(hum);
+  Serial.print(hum/10.0);
   Serial.println(" % ");
 }
