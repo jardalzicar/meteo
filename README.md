@@ -17,3 +17,5 @@
 - 12.11.- Přes ethernet shield jsem posílal údaje ze senzorů do php aplikace, která zobrazovala
          výpis posledních 30 hodnot v tabulce (viz screenshot)
 - 24.11.- Zkoumal jsem API pro kreslení grafů v html přes canvas 
+- vánoční prázdniny- Řešil jsem vykreslování grafů a posílání dat z php do javascriptu, budu používat
+  framework [Highcharts](http://www.highcharts.com)
