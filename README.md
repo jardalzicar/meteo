@@ -19,3 +19,4 @@
 - 24.11.- Zkoumal jsem API pro kreslení grafů v html přes canvas 
 - vánoční prázdniny- Řešil jsem vykreslování grafů a posílání dat z php do javascriptu, budu používat
   framework [Highcharts](http://www.highcharts.com)
+- 12.1.- řešení grafu, spuštění projektu na domácím serveru
