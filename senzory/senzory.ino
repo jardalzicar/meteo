@@ -7,12 +7,12 @@
 #include <math.h>
 
 #define ALTITUDE 275
-#define INTERVAL 5000
+#define INTERVAL 30000
 #define DHTPIN 2
 
 EthernetClient client;
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x4B, 0x5F }; 
-char server[] = "192.168.1.10";
+char server[] = "192.168.1.111";
 
 SFE_BMP180 pressure;
 DHT dht(DHTPIN, DHT22);

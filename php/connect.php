@@ -3,7 +3,7 @@
 	function Connection(){
 		$server="localhost";
 		$user="root";
-		$pass="poprava";
+		$pass="tvrdik";
 		$db="arduino";
 	   	
 		$connection = mysql_connect($server, $user, $pass);
