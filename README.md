@@ -23,3 +23,4 @@
 - 12.1.- řešení grafu, spuštění projektu na domácím serveru
 - 19.1.- programování uživatelského prostředí
 - 2.2.- grafické úpravy, CSS
+- 9.2.- dokončení GUI
