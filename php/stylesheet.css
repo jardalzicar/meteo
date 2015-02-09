@@ -1,0 +1,141 @@
+
+body{
+ 
+  color: rgba(255,255,255,0.9);
+
+  padding: 0;
+  margin: 0;
+  background: url("bg7.jpg");
+  background-color: navy;
+  background-attachment: fixed;
+  background-repeat: repeat-x;
+  background-size: 100%;
+  font-family: Calibri;
+
+}
+
+*{
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+  padding: 0;
+  margin: 0;
+}
+
+h2{
+  float: left;
+  margin-left: 1%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-shadow: 0px 0px 3px black;
+}
+
+h3{
+  float: left;
+  margin-left: 1%;
+  margin-right: 30%;
+  margin-top: 30px;
+  margin-bottom: 0;
+  text-shadow: 0px 0px 3px black;
+}
+
+
+
+.values{
+  
+  /*
+  background-color: rgba(50,50,150,0.6);
+  */
+
+  background-color: rgba(100,100,150,0.5);
+  text-shadow: 0px 0px 3px black;
+  box-shadow: 2px 2px 5px black;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+  padding-left: 1%;
+  padding-right: 1%;
+	height: 100px;
+	width: 20%;
+	float: left;
+
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+.values div {
+  font-size: 45px;
+  font-family: Helvetica Neue;
+  font-weight: normal;
+}
+
+#canvas, #canvas2{
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 5px black;
+}
+
+
+#title{
+	background-color: rgba(50,50,150,0.6);
+  box-shadow: 1px 1px 2px black;
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+  
+#line{
+  border-top: 2px dotted rgba(255,255,255,0.5);
+  width: 100%;
+  margin-bottom: 10px;
+
+}      
+        
+#teplota{
+	height: 210px;
+	width: 32%;
+}
+
+#vlhkost{
+  margin-right: 10%;
+}
+
+#t{
+  font-size: 100px;
+}
+
+#time{
+  font-size: 30px;
+}
+
+/*
+
+ #content{
+            height: 1200px;
+            width: 100%;
+            overflow: hidden;
+            background: -webkit-linear-gradient(left top, #051952, #0C76C2,  blue );
+            background: -o-linear-gradient(left top, #051952, #0C76C2,  blue ); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(left top, #051952, #0C76C2,  blue ); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(left top, #051952, #0C76C2,  blue) ; /* Standard syntax */
+        }
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+

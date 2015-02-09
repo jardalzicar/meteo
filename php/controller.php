@@ -12,7 +12,7 @@
 	   switch ($type) {
 
 		    case "a":
-		    	$result=mysql_query("SELECT * FROM (SELECT * FROM senzory2 ORDER BY time DESC LIMIT 5000) sub ORDER BY time", $link);
+		    	$result=mysql_query("SELECT * FROM (SELECT * FROM senzory2 WHERE date(time) > DATE_SUB(NOW(), INTERVAL 1 WEEK) ORDER BY time DESC) sub ORDER BY time", $link);
 		        echo json_encode(mysqlData($result));
 		        break; 
 

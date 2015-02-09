@@ -6,42 +6,23 @@
       <script src="jquery-1.11.2.min.js"></script>
       <script src="highstock.js"></script> 
       <script src="highcharts-more.js"></script> 
-      <script src="options.js"></script> 
-      
-      <style type="text/css">
-        body{
-          color:white;
-        }
-        #canvas{
-          margin-top: 20px;
-          margin-bottom: 20px;
-        }
-        #canvas2{
-          margin-top: 20px;
-          margin-bottom: 20px;
-        }
-
-
-
-      </style>
+      <script src="options.js"></script>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css"> 
    </head>
-<body bgcolor ="blue">
-   <h1>Meteorologická stanice</h1>
-   <hr>
+<body><div id= "content">
 
-   <h2>
-      Teplota: <span id ="t"></span><br>
-      Tlak: <span id ="p"></span><br>
-      Vlhkost: <span id ="h"></span><br>
-      Rosný bod: <span id ="dp"></span><br>
-      Pocitová teplota: <span id ="hi"></span><br>
-   </h2>
-   <h3 id = "time"></h3>
+   <div id = "title"> <h2> Meteorologická stanice GJK </h2> </div>
 
-   <hr>
-	 <div id="canvas" width="100%"></div>
-   <hr>
-   <div id="canvas2" width="100%"></div>
+   <div class = "values" id ="teplota"> Teplota:<div id = "t"></div> <div id = "line"></div> <div id = "time"></div> </div>
+   <div class = "values" id = "tlak"> Tlak: <div id ="p"></div> </div>
+   <div class = "values" id = "vlhkost"> Vlhkost: <div id ="h"></div> </div>
+   <div class = "values" id = "pocitovateplota"> Pocitová teplota: <div id ="hi"></div> </div>
+   <div class = "values" id = "rosnybod"> Rosný bod: <div id ="dp"></div> </div>
+   
+   <h3> Přehled za poslední týden </h3>   
+	 <div id="canvas"><h2> Načítá se graf...</h2></div>
+   <h3> Dlouhodobý graf</h3>
+   <div id="canvas2"><h2> Načítá se graf...</h2></div>
   
  
 
@@ -84,7 +65,7 @@
           options1.series[0].data = parseData(data, "t");
           options1.series[1].data = parseData(data, "p");
           options1.series[2].data = parseData(data, "h");
-
+          options1.chart.renderTo = "canvas";
           var ch = new Highcharts.StockChart(options1);
           ch.series[2].hide();
           return ch;      
@@ -94,7 +75,7 @@
       function createRangeChart(data){
           options2.series[0].data = parseData(data, "xt");
           options2.series[1].data = parseData(data, "xp");
-
+          options2.chart.renderTo = "canvas2";
           var ch = new Highcharts.StockChart(options2); 
           ch.series[1].hide();
           return ch;         
@@ -121,9 +102,29 @@
 
       function timer() {
           var d = new Date();
-          var t = d.toTimeString();
-          var date = d.getDate() + ". " + (d.getMonth() + 1) + ". " + d.getFullYear() + " - ";
-          $("#time").text(date + t);
+          
+          var h = d.getHours();
+          var m = d.getMinutes();
+          var s = d.getSeconds();
+          h = ( h < 10 ? "0" : "" ) + h;
+          m = ( m < 10 ? "0" : "" ) + m;
+          s = ( s < 10 ? "0" : "" ) + s;
+          var time = h + ":" + m + ":" + s;
+
+          var date = d.getDate() + ". " + (d.getMonth() + 1) + ". " + d.getFullYear() + " ";
+
+          var weekday = new Array(7);
+          weekday[0]=  "Ne";
+          weekday[1] = "Po";
+          weekday[2] = "Út";
+          weekday[3] = "St";
+          weekday[4] = "Čt";
+          weekday[5] = "Pá";
+          weekday[6] = "So";
+
+          var n = weekday[d.getDay()] + "&nbsp &nbsp";
+
+          $("#time").html(n + date + " &nbsp &nbsp &nbsp &nbsp" + time);
       }
 
       function dewPoint(temp, hum){
@@ -218,5 +219,5 @@
 
 
 
-</body>
+</div></body>
 </html>

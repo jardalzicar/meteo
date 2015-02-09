@@ -5,32 +5,89 @@
         }
       }
       
+
+      
       var options1 = {
       
               chart: {
                   type: 'areaspline',
-                  renderTo: "canvas",
                   zoomType: "x",
-                  spacingLeft: 5,
+                  backgroundColor: "rgba(100,100,100,0.8)",
                   spacingRight: 5,
-                  //borderColor: '#000000',
-                  borderWidth: 1,
-                  events: {
-                      
-                  }
+                  spacingLeft: 5,
+                  plotBackgroundColor: "rgba(150,150,150,0.6)",
+
               },
+              colors: ["rgb(92,255,105)", 'black', "rgb(54,161,255)", '#f7a35c', '#8085e9', 
+                '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'
+              ],
               legend: {
                   enabled: true,
                   floating: true,
-                  align: 'center',
+                  align: 'right',
                   verticalAlign: 'top',
-                 // y: 30
+                  x: -30,
+                  itemStyle: {
+                    color: 'white',
+                    fontSize: "15px", 
+                    fontWeight: "bold" 
+                  },
+                  itemHiddenStyle: {
+                    color: "gray"
+                  },
+                  itemHoverStyle: {
+                    color: "black"
+                  }
               },
               navigator: {
-                  margin: 10
+                  margin: 10,
+                  outlineColor: 'white',
+                  outlineWidth: 1,
+                  maskFill: 'rgba(100, 100, 150, 0.6)',
+                  maskInside: false,
+                  xAxis: {
+
+                    labels: {
+                      style: {
+                        color: "white"
+                      }
+                    }
+                  }
+              },
+              credits: {
+                style: {
+                  color: "white"
+                }
               },
               rangeSelector: {
                   inputEnabled: false,
+                  buttonTheme: {
+                    fill: 'none',
+                    stroke: "white",
+                    'stroke-width': 1,
+                    style: {
+                        color: 'white',
+                        fontWeight: 'bold',
+                    },
+                    states: {
+                        hover: {
+                          fill: 'rgba(0,0,128,0.6)',
+                          stroke: "white",
+                        },
+                        select: {
+                            fill: 'rgba(0,0,128,0.6)',
+                            stroke: "white",
+                            'stroke-width': 2,
+                            style: {
+                              color: "white"
+                            }
+                        }
+                    }                                                 
+                  },
+                  labelStyle: {
+                      "display": "none"
+                  },
+
                   buttons: [{
                     type: 'minute',
                     count: 180,
@@ -44,14 +101,10 @@
                     count: 3,
                     text: '3d'
                   }, {
-                    type: 'week',
-                    count: 1,
-                    text: '1w'
-                  }, {
                     type: 'all',
                     text: 'All'
                   }],
-                  selected: 0
+                  selected: 2
               },
 
               scrollbar: {
@@ -59,23 +112,40 @@
               },
        
               xAxis: {
-                 //startOnTick: true,
-                 //endOnTick: true,
-                  //showFirstLabel: true,
-                  //showLastLabel: true,
+
                   gridLineWidth: 1,
+                  gridLineColor: "white",
+                  tickLength: 0,
                   ordinal: false,
-                  //min: Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate(), 0,0,0,0),
-                  //max: Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate(), 23,59,59,999),
-                  //range:  48 * 3600 * 1000,
-                  //minRange: 300000
+                  
+                  labels: {
+                     
+                     style: {
+                        color: 'white',
+                     }
+                  }
+
 
               },
 
               yAxis:[{
+                    offset: 0,
                     gridLineWidth: 1,
-                    offset: 15,
+                    gridLineColor: "white",
                     showEmpty: false,
+                    labels: {
+                       align: "left",
+                       x: 5,
+                       y: -3,
+                       formatter: function () {
+                            return this.value + "°C";
+                       },
+                       style: {
+                          color: 'white',
+                          "font-size": "10"
+                       }
+                    },
+                   
                     plotLines: [{
                       color: 'red', // Color value
                       value: '0', // Value of where the line will appear
@@ -85,11 +155,32 @@
                     offset: 0,
                     opposite: false,
                     showEmpty: false,  
-                    allowDecimals: false 
+                    allowDecimals: false,
+                    labels: {
+                       align: "right",
+                       x: -5,
+                       formatter: function () {
+                            return this.value + "<br>HPa";
+                       },
+                       style: {
+                          color: 'white',
+                       }
+                    } 
               },{
-                    offset: 30,
+                    offset: 0,
                     showEmpty: false,
-                    allowDecimals: false     
+                    allowDecimals: false,
+                    labels: {
+                       align: "left",
+                       x: 5,
+                       y: 12,
+                       formatter: function () {
+                            return this.value + "%";
+                       },
+                       style: {
+                          color: 'white',
+                       }
+                    }     
               }],
 
               tooltip: {
@@ -99,17 +190,40 @@
                                              
               series: [{
                   yAxis: 0,
+                  zIndex: 1,
                   name: 'Teplota',
+                  lineColor: "rgba(92,255,105,0.9)",
+                  lineWidth: 2,
+                  fillColor:{
+                    linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                    stops: [
+                        [0, "rgba(92,255,105,0.5)"],
+                        [1, "rgba(191,227,194,0.5)"]
+
+                    ]
+                  },
                   data: []
               },{
                   yAxis: 1,
+                  zIndex: 3,
                   name: "Tlak",
                   type: "spline",
+                  lineColor: "rgba(0,0,0,0.9)",
                   data: []
               },{
                   yAxis: 2,
+                  zIndex: 2,
                   name: "Vlhkost",
-                  type: "area",
+                  lineColor: "rgba(54,161,255,0.9)",
+                  lineWidth: 2,
+                  fillColor:{
+                    linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                    stops: [
+                        [0, "rgba(54,161,255,0.3)"],
+                        [1, "rgba(188,207,247,0.3)"]
+
+                    ]
+                  },
                   data: []
               }]
 
@@ -118,14 +232,69 @@
         var options2 = {
           chart: {
                 type: 'columnrange',
-                renderTo: "canvas2",
                 zoomType: "x",
-                height: 300
+                height: 300,
+                backgroundColor: "rgba(100,100,100,0.8)",
+                spacingRight: 5,
+                spacingLeft: 10,
+                plotBackgroundColor: "rgba(150,150,150,0.6)",
             },
+            colors: ["rgb(92,255,105)", 'black', "rgb(54,161,255)", '#f7a35c', '#8085e9', 
+                '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'
+            ],
 
             rangeSelector: {
-                selected: 2
-            },
+                  inputEnabled: false,
+                  buttonTheme: {
+                    fill: 'none',
+                    stroke: "white",
+                    'stroke-width': 1,
+                    style: {
+                        color: 'white',
+                        fontWeight: 'bold',
+                    },
+                    states: {
+                        hover: {
+                          fill: "rgba(100, 100, 150, 0.6)",
+                          stroke: "white",
+                          'stroke-width': 2,
+                        },
+                        select: {
+                            fill: 'rgba(100, 100, 150, 0.6)',
+                            stroke: "white",
+                            'stroke-width': 2,
+                            style: {
+                              color: "white"
+                            }
+                        }
+                    }                                                 
+                  },
+                  labelStyle: {
+                      "display": "none"
+                  },
+
+                  buttons: [{
+                    type: 'week',
+                    count: 2,
+                    text: '2w'
+                  }, {
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                  }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                  },{
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                  },{
+                    type: 'all',
+                    text: 'All'
+                  }],
+                  selected: 1
+              },
 
             scrollbar: {
                 enabled: false
@@ -135,33 +304,96 @@
                 valueSuffix: '°C'
             },
             
-            legend: {
+           legend: {
                   enabled: true,
                   floating: true,
-                  align: 'center',
+                  align: 'right',
                   verticalAlign: 'top',
-                 // y: 30
-            },
+                  x: -30,
+                  itemStyle: {
+                    color: 'white',
+                    fontSize: "15px", 
+                    fontWeight: "bold" 
+                  },
+                  itemHiddenStyle: {
+                    color: "gray"
+                  },
+                  itemHoverStyle: {
+                    color: "black"
+                  }
+              },
 
             navigator: {
                   margin: 10,
-                  height: 25
-            },
+                  outlineColor: 'white',
+                  outlineWidth: 1,
+                  maskFill: 'rgba(100, 100, 150, 0.6)',
+      
+                  xAxis: {
+                    showLastLabel: false,
+                    labels: {
+                      style: {
+                        color: "white"
+                      }
+                    }
+                  },
+                  series: {
+                    type: "columnrange",
 
-            xAxis:{
-              ordinal: false,
-              minRange: 1000 * 3600 * 24 * 7,
-              minTickInterval: 1000 * 3600 * 24
+                  }
+              },
+              credits: {
+                style: {
+                  color: "white"
+                }
+              },
+            xAxis: {
+
+                  tickLength: 0,
+                  ordinal: false,
+                  minRange: 1000 * 3600 * 24 * 7,
+                  minTickInterval: 1000 * 3600 * 24,
+                  labels: {
+                     
+                     style: {
+                        color: 'white',
+                     }
+                  }
+
+
             },
 
             yAxis:[{
-              gridLineWidth: 1,
-              offset: 15,
-              showEmpty: false
+              offset: 0,
+                    gridLineWidth: 1,
+                    showEmpty: false,
+                    labels: {
+                       align: "left",
+                       x: 5,
+                       y: -3,
+                       formatter: function () {
+                            return this.value + "°C";
+                       },
+                       style: {
+                          color: 'white',
+                          "font-size": "10"
+                       }
+                    }
             },{
-              opposite: false,
-              offset: 15,
-              showEmpty: false
+              offset: 0,
+                    opposite: false,
+                    showEmpty: false,  
+                    allowDecimals: false,
+                    labels: {
+                       align: "right",
+                       x: -5,
+                       formatter: function () {
+                            return this.value + "<br>HPa";
+                       },
+                       style: {
+                          color: 'white',
+                       }
+                    } 
             }],
 
             series: [{

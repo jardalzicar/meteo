@@ -7,8 +7,8 @@
 #include <math.h>
 
 #define ALTITUDE 275
-#define INTERVAL 30000
-#define DHTPIN 2
+#define INTERVAL 60000
+#define DHTPIN A3
 
 EthernetClient client;
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x4B, 0x5F }; 
