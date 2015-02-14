@@ -1,5 +1,6 @@
 <?php
-	
+	// retrieve data from mysql database
+ 
 	header("Content-type: text/javascript");
 	include("connect.php"); 	
 	
@@ -32,7 +33,7 @@
 	
 	mysql_close(); 
 
-	
+	// make array from mysql table rows
 	function mysqlData($result){
 		$array = [];
 		while($row = mysql_fetch_row($result)){

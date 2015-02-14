@@ -1,5 +1,6 @@
 <?php
 
+	// Connect to MySQL database
 	function Connection(){
 		$server="localhost";
 		$user="root";

@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html>
    <head>
       <title>meteo</title>
@@ -9,24 +10,27 @@
       <script src="options.js"></script>
       <link rel="stylesheet" type="text/css" href="stylesheet.css"> 
    </head>
-<body><div id= "content">
+<body>
 
    <div id = "title"> <h2> Meteorologická stanice GJK </h2> </div>
 
    <div class = "values" id ="teplota"> Teplota:<div id = "t"></div> <div id = "line"></div> <div id = "time"></div> </div>
-   <div class = "values" id = "tlak"> Tlak: <div id ="p"></div> </div>
-   <div class = "values" id = "vlhkost"> Vlhkost: <div id ="h"></div> </div>
-   <div class = "values" id = "pocitovateplota"> Pocitová teplota: <div id ="hi"></div> </div>
-   <div class = "values" id = "rosnybod"> Rosný bod: <div id ="dp"></div> </div>
-   
+   <div class = "values" id = "tlak"> Tlak: <div id ="p"></div></div> 
+   <div class = "values" id = "vlhkost"> Vlhkost: <div id ="h"></div></div> 
+   <div class = "values" id = "pocitovateplota"> Pocitová teplota: <div id ="hi"></div></div> 
+   <div class = "values" id = "rosnybod"> Rosný bod: <div id ="dp"></div></div> 
+
    <h3> Přehled za poslední týden </h3>   
 	 <div id="canvas"><h2> Načítá se graf...</h2></div>
+
    <h3> Dlouhodobý graf</h3>
    <div id="canvas2"><h2> Načítá se graf...</h2></div>
   
  
 
    <script>
+   
+      // Live-update interval in miliseconds
       var INTERVAL = 30000;
 
       // Initialization...
@@ -34,6 +38,7 @@
  
         Highcharts.setOptions(globalOptions);
         displayValues();
+        setFontSize();
         setInterval(timer, 1000);
 
         $.getJSON('controller.php', {"type":"c"}, function(data){
@@ -52,7 +57,6 @@
             function(){
               updateChart(chart);
               displayValues();
-
             }, 
             INTERVAL
           );
@@ -60,7 +64,12 @@
 
       });
 
-      // Create 14-days overview chart
+      // Change font size on vindow resize
+      $(window).resize(function(){
+        setFontSize();
+      });
+
+      // Create 1 week overview chart
       function createChart(data){
           options1.series[0].data = parseData(data, "t");
           options1.series[1].data = parseData(data, "p");
@@ -81,6 +90,7 @@
           return ch;         
       }
 
+      // Live-update 1 week chart
       function updateChart(chart){
         $.getJSON( "controller.php", {"type":"c"}, function( data ) {
           chart.series[0].addPoint([parseTime(data[0]), temp(data)], true, false);
@@ -90,6 +100,7 @@
         });
       }
 
+      // Display current values on the top of the page
       function displayValues(){
         $.getJSON('controller.php', {"type":"c"}, function(data){
           $("#t").text(temp(data)+" °C ");
@@ -100,6 +111,7 @@
         });
       }
 
+      // Live-update date ant time
       function timer() {
           var d = new Date();
           
@@ -109,24 +121,25 @@
           h = ( h < 10 ? "0" : "" ) + h;
           m = ( m < 10 ? "0" : "" ) + m;
           s = ( s < 10 ? "0" : "" ) + s;
-          var time = h + ":" + m + ":" + s;
+          var timeString = h + ":" + m + ":" + s;
 
-          var date = d.getDate() + ". " + (d.getMonth() + 1) + ". " + d.getFullYear() + " ";
+          var dateString = d.getDate() + ". " + (d.getMonth() + 1) + ". " + d.getFullYear() + " ";
 
-          var weekday = new Array(7);
-          weekday[0]=  "Ne";
-          weekday[1] = "Po";
-          weekday[2] = "Út";
-          weekday[3] = "St";
-          weekday[4] = "Čt";
-          weekday[5] = "Pá";
-          weekday[6] = "So";
+          var weekdays = new Array(7);
+          weekdays[0]=  "Ne";
+          weekdays[1] = "Po";
+          weekdays[2] = "Út";
+          weekdays[3] = "St";
+          weekdays[4] = "Čt";
+          weekdays[5] = "Pá";
+          weekdays[6] = "So";
 
-          var n = weekday[d.getDay()] + "&nbsp &nbsp";
+          var weekDayString = weekdays[d.getDay()] + "&nbsp &nbsp";
 
-          $("#time").html(n + date + " &nbsp &nbsp &nbsp &nbsp" + time);
+          $("#time").html(weekDayString + dateString + " &nbsp &nbsp &nbsp &nbsp" + timeString);
       }
 
+      // Calculate dew point
       function dewPoint(temp, hum){
         tem = -1.0*temp;
         es = 6.112*Math.exp(-1.0*17.67*tem/(243.5 - tem));
@@ -136,6 +149,7 @@
         return Math.round(td*100)/100;
       }  
 
+      // Calculate heat index
       function heatIndex(temp, r){
         var t=temp*(9/5) + 32;
         var t2=Math.pow(t, 2);
@@ -151,6 +165,7 @@
         return Math.round(m*100)/100;
       }
  
+      // Prepare data array for chart
       function parseData(data, type){
         var data2 = [];
         $.each(data, function( index, value ) {
@@ -209,15 +224,17 @@
         var temp = parseInt(row[3])/10;
         return temp;
       }
-        
-      
-        
+
+      // Dynamically update font size
+      function setFontSize(){
+          $("#p,#h,#hi,#dp").css("font-size", ($("#p").width() < 250) ? $("#p").width()/5.5 : "45px");
+          $("#t").css("font-size", ($("#t").width() < 500) ? $("#t").width()/5 : "100px");
+          $("#time").css("font-size", ($("#t").width() < 500) ? $("#t").width()/18 : "28px");
+      }
+   
 
    </script>
 
 
-
-
-
-</div></body>
+</body>
 </html>

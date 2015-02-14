@@ -1,3 +1,4 @@
+// Configuration file for charts displayed in index.html
 
       var globalOptions = {
         global: {
@@ -6,7 +7,7 @@
       }
       
 
-      
+      // 1 week overview chart
       var options1 = {
       
               chart: {
@@ -229,6 +230,7 @@
 
         };
 
+        // Long-time chart
         var options2 = {
           chart: {
                 type: 'columnrange',
@@ -328,6 +330,7 @@
                   outlineColor: 'white',
                   outlineWidth: 1,
                   maskFill: 'rgba(100, 100, 150, 0.6)',
+                  maskInside: false,
       
                   xAxis: {
                     showLastLabel: false,
@@ -339,6 +342,7 @@
                   },
                   series: {
                     type: "columnrange",
+                    color: "rgba(92,255,105,0.6)"
 
                   }
               },
@@ -399,11 +403,13 @@
             series: [{
               yAxis: 0,
               name: 'Teplota',
+              color: "rgba(92,255,105,0.6)",
               data: []
             },{
               yAxis: 1,
               name: "Tlak",
               type: "spline",
+              color: "black",
               data: []
             }]
 
