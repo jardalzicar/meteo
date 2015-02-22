@@ -1,7 +1,9 @@
 
-##Domácí meteorologická stanice- maturitní projekt
-####[zkušební provoz na domácím serveru](http://109.80.213.22/arduino/)
+##Meteorologická stanice pro GJK - maturitní projekt
+###[zkušební provoz na domácím serveru](http://109.80.213.22/arduino/)
 -----------
+#####Screenshot
+![Alt text](https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/Screen%20Shot%202015-02-22%20at%2017.10.50.png "Optional title")
 
 - 30.9.- Prohlížel jsem si podobné projekty na instructables
 - 7.10.- Zvažuji možnost použít wifi modul místo bluetooth, našel jsem jeden docela levný na ebayi a sehnal 
