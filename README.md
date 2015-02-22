@@ -6,9 +6,9 @@
 ![Alt text](https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/Screen%20Shot%202015-02-22%20at%2017.10.50.png "Optional title")
 
 #####Komponenty
-![Alt text]https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/IMG_0740.JPG "Optional title")
-![Alt text]https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/IMG_0759.JPG "Optional title")
-![Alt text]https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/IMG_0773.JPG "Optional title")
+![Alt text](https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/IMG_0740.JPG "Optional title")
+![Alt text](https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/IMG_0759.JPG "Optional title")
+![Alt text](https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/IMG_0773.JPG "Optional title")
 
 #####Historie
 - 30.9.- Prohlížel jsem si podobné projekty na instructables
