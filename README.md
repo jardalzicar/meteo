@@ -1,6 +1,6 @@
 
 ##Meteorologická stanice pro GJK - maturitní projekt
-###[zkušební provoz na domácím serveru](http://109.80.213.22/arduino/)
+####[Spuštěno na školním serveru](http://195.113.84.161/~xlzij01/meteo/)
 
 #####Screenshot webové aplikace
 ![Alt text](https://raw.githubusercontent.com/jardalzicar/meteo/master/pictures/Screen%20Shot%202015-02-22%20at%2017.10.50.png "Optional title")
@@ -32,3 +32,4 @@
 - 19.1.- programování uživatelského prostředí
 - 2.2.- grafické úpravy, CSS
 - 9.2.- dokončení GUI
+- 23.2.- zahájení provozu na mém účtu na školním serveru
