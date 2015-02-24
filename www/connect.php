@@ -2,10 +2,10 @@
 
 	// Connect to MySQL database
 	function Connection(){
-		$server="localhost";
-		$user="root";
-		$pass="tvrdik";
-		$db="arduino";
+		$server="192.168.1.50";
+		$user="jarda";
+		$pass="jarda.";
+		$db="weather";
 	   	
 		$connection = mysql_connect($server, $user, $pass);
 
