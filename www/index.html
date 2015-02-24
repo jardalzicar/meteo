@@ -17,14 +17,15 @@
    <div class = "values" id ="teplota"> Teplota:<div id = "t"></div> <div id = "line"></div> <div id = "time"></div> </div>
    <div class = "values" id = "tlak"> Tlak: <div id ="p"></div></div> 
    <div class = "values" id = "vlhkost"> Vlhkost: <div id ="h"></div></div> 
-   <div class = "values" id = "pocitovateplota"> Pocitová teplota: <div id ="hi"></div></div> 
-   <div class = "values" id = "rosnybod"> Rosný bod: <div id ="dp"></div></div> 
+   <div class = "values" id = "pocitovateplota"> <a href="http://en.wikipedia.org/wiki/Heat_index">Pocitová teplota:</a> <div id ="hi"></div></div> 
+   <div class = "values" id = "rosnybod"> <a href="http://cs.wikipedia.org/wiki/Rosný_bod">Rosný bod:</a> <div id ="dp"></div></div> 
 
    <h3> Přehled za poslední týden </h3>   
 	 <div id="canvas"><h2> Načítá se graf...</h2></div>
 
    <h3> Dlouhodobý graf</h3>
    <div id="canvas2"><h2> Načítá se graf...</h2></div>
+   <h3> &copy; 2015 Jaroslav Lžičař <br> <a href="https://github.com/jardalzicar/meteo"> &#10142; GitHub</a> <br><br> </h3>
   
  
 
@@ -107,7 +108,7 @@
           $("#p").text(pres(data)+" HPa ");
           $("#h").text(hum(data)+" % ");
           $("#dp").text(dewPoint(temp(data), hum(data))+" °C ");
-          $("#hi").text(heatIndex(temp(data), hum(data))+" °C ");
+          $("#hi").text(heatIndex(temp(data), hum(data)));
         });
       }
 
@@ -150,19 +151,24 @@
       }  
 
       // Calculate heat index
-      function heatIndex(temp, r){
-        var t=temp*(9/5) + 32;
-        var t2=Math.pow(t, 2);
-        var t3=Math.pow(t, 3);
-        var rh2=Math.pow(r, 2);
-        var rh3=Math.pow(r, 3);
+      function heatIndex(temp, hum){
 
-        var index =16.923+0.185212*t+5.37941*r-0.100254*t*r+ 0.941695e-2*t2+0.728898e-2*rh2+0.345372e-3*t2*r- 
-                  0.814971e-3*t*rh2+0.102102e-4*t2*rh2- 0.38646e-4*t3+0.291583e-4*rh3+0.142721e-5*t3*r+ 
-                  0.197483e-6*t*rh3-0.218429e-7*t3*rh2+ 0.843296e-9*t2*rh3-0.481975e-10*t3*rh3;
+        if(temp > 27.0 && hum > 40.0){
+          var t=temp*(9/5) + 32;
+          var r = hum;
+          var t2=Math.pow(t, 2);
+          var t3=Math.pow(t, 3);
+          var rh2=Math.pow(r, 2);
+          var rh3=Math.pow(r, 3);
 
-        var m = 5/9*(index-32);
-        return Math.round(m*100)/100;
+          var index =16.923+0.185212*t+5.37941*r-0.100254*t*r+ 0.941695e-2*t2+0.728898e-2*rh2+0.345372e-3*t2*r- 
+                    0.814971e-3*t*rh2+0.102102e-4*t2*rh2- 0.38646e-4*t3+0.291583e-4*rh3+0.142721e-5*t3*r+ 
+                    0.197483e-6*t*rh3-0.218429e-7*t3*rh2+ 0.843296e-9*t2*rh3-0.481975e-10*t3*rh3;
+
+          var m = 5/9*(index-32);
+          return Math.round(m*100)/100 + " °C";
+        }  
+        else return " - ";
       }
  
       // Prepare data array for chart

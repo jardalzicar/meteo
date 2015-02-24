@@ -1,66 +1,70 @@
 // Configuration file for charts displayed in index.html
 
-      var globalOptions = {
-        global: {
-          useUTC: false
+var globalOptions = {
+  global: {
+    useUTC: false
+  }
+}
+      
+
+// 1 week overview chart
+var options1 = {
+      
+  chart: {
+    type: 'areaspline',
+    zoomType: "x",
+    backgroundColor: "rgba(100,100,100,0.8)",
+    spacingRight: 5,
+    spacingLeft: 5,
+    plotBackgroundColor: "rgba(150,150,150,0.6)",
+  },
+              
+  colors: [
+    "rgb(92,255,105)", 'black', "rgb(54,161,255)", '#f7a35c', '#8085e9', 
+    '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'
+  ],
+              
+  legend: {
+    enabled: true,
+    floating: true,
+    align: 'right',
+    verticalAlign: 'top',
+    x: -30,
+    itemStyle: {
+      color: 'white',
+      fontSize: "15px", 
+      fontWeight: "bold" 
+    },
+    itemHiddenStyle: {
+      color: "gray"
+    },
+    itemHoverStyle: {
+      color: "black"
+    }
+  },
+              
+  navigator: {
+    margin: 10,
+    outlineColor: 'white',
+    outlineWidth: 1,
+    maskFill: 'rgba(100, 100, 150, 0.6)',
+    maskInside: false,
+    xAxis: {
+      labels: {
+        style: {
+          color: "white"
         }
       }
-      
-
-      // 1 week overview chart
-      var options1 = {
-      
-              chart: {
-                  type: 'areaspline',
-                  zoomType: "x",
-                  backgroundColor: "rgba(100,100,100,0.8)",
-                  spacingRight: 5,
-                  spacingLeft: 5,
-                  plotBackgroundColor: "rgba(150,150,150,0.6)",
-
-              },
-              colors: ["rgb(92,255,105)", 'black', "rgb(54,161,255)", '#f7a35c', '#8085e9', 
-                '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'
-              ],
-              legend: {
-                  enabled: true,
-                  floating: true,
-                  align: 'right',
-                  verticalAlign: 'top',
-                  x: -30,
-                  itemStyle: {
-                    color: 'white',
-                    fontSize: "15px", 
-                    fontWeight: "bold" 
-                  },
-                  itemHiddenStyle: {
-                    color: "gray"
-                  },
-                  itemHoverStyle: {
-                    color: "black"
-                  }
-              },
-              navigator: {
-                  margin: 10,
-                  outlineColor: 'white',
-                  outlineWidth: 1,
-                  maskFill: 'rgba(100, 100, 150, 0.6)',
-                  maskInside: false,
-                  xAxis: {
-
-                    labels: {
-                      style: {
-                        color: "white"
-                      }
-                    }
-                  }
-              },
-              credits: {
-                style: {
-                  color: "white"
-                }
-              },
-              rangeSelector: {
+    }
+  },
+              
+  credits: {
+    style: {
+      color: "white"
+    }
+  },
+  
+  rangeSelector: {
                   inputEnabled: false,
                   buttonTheme: {
                     fill: 'none',
@@ -106,7 +110,7 @@
                     text: 'All'
                   }],
                   selected: 2
-              },
+  },
 
               scrollbar: {
                 enabled: false
@@ -193,16 +197,17 @@
                   yAxis: 0,
                   zIndex: 1,
                   name: 'Teplota',
-                  lineColor: "rgba(92,255,105,0.9)",
+                  lineColor: "rgba(0,255,50,0.9)",
                   lineWidth: 2,
                   fillColor:{
                     linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
                     stops: [
-                        [0, "rgba(92,255,105,0.5)"],
+                        [0, "rgba(0,255,75,0.5)"],
                         [1, "rgba(191,227,194,0.5)"]
 
                     ]
                   },
+       
                   data: []
               },{
                   yAxis: 1,
@@ -215,16 +220,9 @@
                   yAxis: 2,
                   zIndex: 2,
                   name: "Vlhkost",
-                  lineColor: "rgba(54,161,255,0.9)",
+                  lineColor: "rgba(0,50,255,0.9)",
                   lineWidth: 2,
-                  fillColor:{
-                    linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-                    stops: [
-                        [0, "rgba(54,161,255,0.3)"],
-                        [1, "rgba(188,207,247,0.3)"]
-
-                    ]
-                  },
+                  fillColor: "rgba(0,50,255,0.1)",
                   data: []
               }]
 
@@ -334,6 +332,7 @@
       
                   xAxis: {
                     showLastLabel: false,
+                    minRange: 31*24*3600*1000,
                     labels: {
                       style: {
                         color: "white"
@@ -403,7 +402,7 @@
             series: [{
               yAxis: 0,
               name: 'Teplota',
-              color: "rgba(92,255,105,0.6)",
+              color: "rgba(0,255,75,0.6)",
               data: []
             },{
               yAxis: 1,
@@ -414,3 +413,4 @@
             }]
 
         };
+        //[0, "rgba(92,255,105,0.3)"],
