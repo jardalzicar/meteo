@@ -7,7 +7,7 @@
 	$link=Connection();
 	
 
-	if( $_REQUEST["type"] ){
+	if( isset($_REQUEST["type"]) ){
 	   
 	   $type = $_REQUEST['type'];
 	   switch ($type) {
@@ -35,7 +35,7 @@
 
 	// make array from mysql table rows
 	function mysqlData($result){
-		$array = [];
+		$array = array();
 		while($row = mysql_fetch_row($result)){
 			$array[] = $row;				
    		}

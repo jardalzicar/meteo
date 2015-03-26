@@ -65,35 +65,36 @@ var options1 = {
   },
   
   rangeSelector: {
-                  inputEnabled: false,
-                  buttonTheme: {
-                    fill: 'none',
-                    stroke: "white",
-                    'stroke-width': 1,
-                    style: {
-                        color: 'white',
-                        fontWeight: 'bold',
-                    },
-                    states: {
-                        hover: {
-                          fill: 'rgba(0,0,128,0.6)',
-                          stroke: "white",
-                        },
-                        select: {
-                            fill: 'rgba(0,0,128,0.6)',
-                            stroke: "white",
-                            'stroke-width': 2,
-                            style: {
-                              color: "white"
-                            }
-                        }
-                    }                                                 
-                  },
-                  labelStyle: {
-                      "display": "none"
-                  },
+    inputEnabled: false,
+    buttonTheme: {
+      fill: 'none',
+      stroke: "white",
+      'stroke-width': 1,
+      style: {
+        color: 'white',
+        fontWeight: 'bold',
+      },
+      states: {
+        hover: {
+          fill: 'rgba(0,0,128,0.6)',
+          stroke: "white",
+        },
+        select: {
+          fill: 'rgba(0,0,128,0.6)',
+          stroke: "white",
+          'stroke-width': 2,
+          style: {
+            color: "white"
+          }
+        }
+      }                                                 
+  },
 
-                  buttons: [{
+  labelStyle: {
+    "display": "none"
+  },
+
+  buttons: [{
                     type: 'minute',
                     count: 180,
                     text: '3h'
@@ -112,12 +113,11 @@ var options1 = {
                   selected: 2
   },
 
-              scrollbar: {
-                enabled: false
-              },
+  scrollbar: {
+    enabled: false
+  },
        
-              xAxis: {
-
+  xAxis: {
                   gridLineWidth: 1,
                   gridLineColor: "white",
                   tickLength: 0,
@@ -131,9 +131,9 @@ var options1 = {
                   }
 
 
-              },
+  },
 
-              yAxis:[{
+  yAxis:[{
                     offset: 0,
                     gridLineWidth: 1,
                     gridLineColor: "white",
@@ -186,14 +186,14 @@ var options1 = {
                           color: 'white',
                        }
                     }     
-              }],
+  }],
 
-              tooltip: {
-                  valueDecimals: 2
+  tooltip: {
+    valueDecimals: 2
                
-              },
+  },
                                              
-              series: [{
+  series: [{
                   yAxis: 0,
                   zIndex: 1,
                   name: 'Teplota',
@@ -224,12 +224,12 @@ var options1 = {
                   lineWidth: 2,
                   fillColor: "rgba(0,50,255,0.1)",
                   data: []
-              }]
+  }]
 
-        };
+};
 
-        // Long-time chart
-        var options2 = {
+// Long-time chart
+var options2 = {
           chart: {
                 type: 'columnrange',
                 zoomType: "x",
@@ -411,6 +411,5 @@ var options1 = {
               color: "black",
               data: []
             }]
-
-        };
-        //[0, "rgba(92,255,105,0.3)"],
+};
+ 

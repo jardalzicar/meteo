@@ -6,13 +6,13 @@
 #include <SPI.h>
 #include <math.h>
 
-#define ALTITUDE 275
+#define ALTITUDE 281
 #define INTERVAL 60000
 #define DHTPIN A3
 
 EthernetClient client;
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x4B, 0x5F }; 
-char server[] = "192.168.1.111";
+char server[] = "195.113.84.161";
 
 SFE_BMP180 pressure;
 DHT dht(DHTPIN, DHT22);
@@ -97,7 +97,7 @@ int measurePressure(int temperature){
 void sendToServer(char server[], int port, String data){
   if (client.connect(server,port)) {
                 Serial.println("-> Connected");
-		client.println("POST /arduino/add.php HTTP/1.1"); 
+		client.println("POST /~xlzij01/meteo/add.php HTTP/1.1"); 
 		client.print("Host: "); 
                 client.println(server);
 		client.println("Content-Type: application/x-www-form-urlencoded"); 
