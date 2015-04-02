@@ -37,7 +37,7 @@ void loop(){
   
   printValues();
   
-  data =(String)"temp=" + temp + "&pres=" + pres + "&hum=" + hum;
+  data =(String)"temp=" + temp + "&pres=" + pres + "&hum=" + hum + "&pass=*****";
   
   sendToServer(server, 80, data);
       
