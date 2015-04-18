@@ -4,7 +4,7 @@
 	function Connection(){
 		$server="192.168.1.50";
 		$user="jarda";
-		$pass="******";
+		$pass="*****";
 		$db="weather";
 	   	
 		$connection = mysql_connect($server, $user, $pass);

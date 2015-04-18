@@ -2,7 +2,7 @@
 
 
       // Live-update interval in miliseconds
-      var INTERVAL = 30000;
+      var INTERVAL = 60000;
       //file to get data from
       var phpFile = "retrieve.php";
 
@@ -39,7 +39,7 @@
         setFontSize();
       });
 
-      // Create 1 week overview chart
+      // Create 1 week chart
       function createChart(data){
           options1.series[0].data = parseData(data, "t");
           options1.series[1].data = parseData(data, "p");
@@ -47,6 +47,7 @@
           options1.chart.renderTo = "canvas";
           var ch = new Highcharts.StockChart(options1);
           ch.series[2].hide();
+          addPlotLines(ch);
           return ch;      
       }
 
@@ -66,11 +67,26 @@
           chart.series[0].addPoint([parseTime(data[0]), temp(data)], true, false);
           chart.series[1].addPoint([parseTime(data[0]), pres(data)], true, false);
           chart.series[2].addPoint([parseTime(data[0]), hum(data)], true, false);
-          console.log(data);
+          //console.log(data);
         });
       }
 
-      // Display current values on the top of the page
+      // Add vertical lines between days
+      function addPlotLines(chart){
+        var d = new Date();
+        d.setHours(0,0,0,0);
+
+        for (i = 0; i < 6; i++){
+          chart.xAxis[0].addPlotLine({
+            value: d.getTime(),
+            color: 'white',
+            width: 3
+          });
+          d.setDate(d.getDate() - 1);
+        } 
+      }
+
+      // Display current values on top of the page
       function displayValues(){
         $.getJSON(phpFile, {"type":"c"}, function(data){
           $("#t").text(temp(data)+" °C ");
@@ -140,7 +156,7 @@
         else return " - ";
       }
  
-      // Prepare data array for chart
+      // Prepare data array for charts
       function parseData(data, type){
         var data2 = [];
         $.each(data, function( index, value ) {

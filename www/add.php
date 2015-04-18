@@ -5,12 +5,12 @@
    $link=Connection();
 
    if(isset($_POST["temp"]) && isset($_POST["pres"]) && isset($_POST["hum"]) && isset($_POST["pass"])){
-      if($_POST["pass"] == "*****"){
-   
+      if($_POST["pass"] == '*****'){
    	   $temp = $_POST["temp"];
          $pres = $_POST["pres"];
    	   $hum = $_POST["hum"]; 	
-         mysql_query("INSERT INTO `senzory2` (`pressure`, `temperature`, `humidity`) VALUES ('".parseInt($pres)."','".parseInt($temp)."','".parseInt($hum)."')", $link);
+         mysql_query("INSERT INTO `senzory2` (`pressure`, `temperature`, `humidity`) 
+         VALUES ('".parseInt($pres)."','".parseInt($temp)."','".parseInt($hum)."')", $link);
       }
    }
 
