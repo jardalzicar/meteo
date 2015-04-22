@@ -3,8 +3,8 @@
 Jednoduchá meteorologická stanice založená na platformě [arduino](http://www.arduino.cc), která měří teplotu, tlak a vlhkost vzduchu, tato data ukládá do databáze a následně zobrazuje přes webovou aplikaci.
 
 - **Aktuální verze:** <http://gjk.cz/~xlzij01/meteo/>
-- **Ukázka:** [screenshoty](https://github.com/jardalzicar/meteo/tree/master/screenshots)
-- **Dokumentace:** [dokumentace projektu v pdf](meteo/dokumentace.pdf) 
+- **Ukázka:** [screenshoty](screenshots)
+- **Dokumentace:** [dokumentace projektu v pdf](dokumentace.pdf) 
 - **Repozitář:** [jardalzicar/meteo](https://github.com/jardalzicar/meteo) + [fork](https://github.com/gjkcz/meteo) v archivu maturitních prací
 - **Autor:** Jaroslav Lžičař, <jarda.lzicar@seznam.cz>
 - **Maturitní práce 2014/15** na [GJK](https://github.com/gjkcz/gjkcz)
@@ -20,7 +20,7 @@ Po načtení by měla stránka vypadat následovně
 
 #### Ovládání
 
-V horní části stránky vidíte aktuální hodnoty teploty, tlaku vlhkosti vzduchu, rosného bodu a pocitové teploty (zobrazuje se pouze při teplotě vyšší než 25 °C).
+V horní části stránky vidíte aktuální hodnoty teploty, tlaku, vlhkosti vzduchu, rosného bodu a pocitové teploty (zobrazuje se pouze při teplotě vyšší než 25 °C).
 
 
 První graf zobrazuje vývoj teploty (zelená plocha) a tlaku (černá čára) za poslední 3 dny.  
@@ -44,9 +44,9 @@ Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za k
 - [BMP180](http://www.adafruit.com/product/1603)
 - [DHT22](http://www.adafruit.com/product/385)
 
-#### Orientace
+#### Rozmístění souborů
 
-Ve složce [senzory](meteo/senzory) se nachází soubor se zdrojovým kódem pro arduino, ve složce [www](meteo/www) naleznete všechny soubory, které jsou umístěny na serveru.
+Ve složce [senzory](senzory) se nachází soubor se zdrojovým kódem pro arduino, ve složce [www](www) naleznete všechny soubory, které jsou umístěny na serveru.
 
 #### Struktura kódu  
 <img src="pictures/structure.png" style="height: 250px;"/>  
@@ -55,7 +55,7 @@ Arduino přečte naměřené hodnoty ze senzorů a odešle je na server jako htt
  
 Když uživatel zobrazí stránku, javascript v souboru `script.js` pošle AJAX žádost souboru `retrieve.php`, který se připojí k databázi, taktéž přes `connect.php`, odtud načte  potřebná data a předá je javascriptu ve formátu JSON. Soubor `script.js` potom data předá grafu, který je zobrazí na stránce. Po uplynutí 1 minuty, během které proběhne další měření, je vyslán nový AJAX požadavek a data jsou obnovena.
 
-Pro podrobnější popis vizte [dokumentaci](meteo/dokumentace.pdf).
+Pro podrobnější popis vizte [dokumentaci](dokumentace.pdf).
 
 #### Použité frameworky
 - [jQuery](http://jquery.com)
