@@ -13,11 +13,11 @@ Jednoduchá meteorologická stanice založená na platformě [arduino](http://ww
 ## Dokumentace pro uživatele
 
 
-###Aplikaci spustíte kliknutím na [tento odkaz](http://gjk.cz/~xlzij01/meteo/)  
+####Aplikaci spustíte kliknutím na [tento odkaz](http://gjk.cz/~xlzij01/meteo/)  
 Po načtení by měla stránka vypadat následovně
 <img src="screenshots/gui0.png" style="height: 500px;"/>
 
-### Ovládání
+#### Ovládání
 
 V horní části stránky vidíte aktuální hodnoty teploty, tlaku vlhkosti vzduchu, rosného bodu a pocitové teploty (zobrazuje se pouze při teplotě vyšší než 25 °C).
 
@@ -31,31 +31,39 @@ V levém horním rohu lze vybrat požadovaný rozsah grafu, maximální hodnota 
 Když stránku posunete dolů, naleznete zde druhý graf.
 <img src="screenshots/chart2.png" style="height: 250px;"/>
   
-Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za každý den. Možnosti nastavení jsou stejné jako u horního grafu, maximální rozsah není omezen.    
+Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za každý den. Možnosti nastavení jsou stejné jako u horního grafu, maximální rozsah není omezen.<br><br><br>    
    
 
-
-
-
-
 ## Dokumentace pro programátory
-(Chci si něco upravit a používat, nebo třeba opravit chybu a poslat pull-request.)
-
-### Kompilace 
-(Pro některé projekty vhodnější nazvat např. Příprava dev režimu)
-
-Pokud uživatel nechce binárku, ale chce si zkompilovat zdrojáky. Stáhne je z githubu a co dál - otevřít v IDE (verze), nastaví kompilátor (odkaz na stažení konkrétní verze), dá build. Nebo třeba zadá `make` a vše se stane samo
-
-### Struktura kódu
-Základní orientace v kódu, jaké jsou hlavní části (sql-model.php), rozmístění složek, 
-
-...
-
-Podrobnější návod je vhodné odkázat do dokumentačního PDFka - s popisem co tam třeba lze najít (popis tříd, atd)
 
 
-## (Changelog)
-(Původní changelog dejte třeba do changelog.md, či úplně smažte. Sem patří jedině changlog po releasech, jinak nic a sekci nevkládat.)
+#### Komponenty
+- [Arduino Uno](http://www.arduino.cc/en/Main/arduinoBoardUno)
+- [Arduino Ethernet Shield](http://www.arduino.cc/en/Main/ArduinoEthernetShield)
+- [BMP180](http://www.adafruit.com/product/1603)
+- [DHT22](http://www.adafruit.com/product/385)
 
-## Screenshoty, obrázky
-(Obrázek vydá za tisíc bajtů. Aspoň dva.)
+#### Struktura kódu  
+<br><img src="pictures/structure.png" style="height: 250px;"/>  
+
+Arduino přečte naměřené hodnoty ze senzorů a odešle je na server jako http požadavek souboru `add.php`.  Ten se přes `connect.php` připojí k MySQL databázi a data do ní uloží.  
+ 
+Když uživatel zobrazí stránku, javascript v souboru `script.js` pošle AJAX žádost souboru `retrieve.php`, který se připojí k databázi, taktéž přes `connect.php`, odtud načte  potřebná data a předá je javascriptu ve formátu JSON. Soubor `script.js` potom data předá grafu, který je zobrazí na stránce. Po uplynutí 1 minuty, během které proběhne další měření, je vyslán nový AJAX požadavek a data jsou obnovena.
+
+#### Použité frameworky
+- [jQuery](http://jquery.com)
+- [Highcharts](http://www.highcharts.com)
+
+
+
+
+## Obrázky  
+
+Zapojené arduino  
+<img src="pictures/IMG_0740.jpg" style="height: 400px;"/>
+
+Komponenty v krabičkách  
+<img src="pictures/IMG_0759.jpg" style="height: 400px;"/>
+
+Venkovní krabička se senzory  
+<img src="pictures/IMG_0884.jpg" style="height: 400px;"/>
