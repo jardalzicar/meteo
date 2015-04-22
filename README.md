@@ -13,19 +13,29 @@ Jednoduchá meteorologická stanice založená na platformě [arduino](http://ww
 ## Dokumentace pro uživatele
 
 
-####Aplikaci spustíte kliknutím na [tento odkaz](http://gjk.cz/~xlzij01/meteo/)
+####Aplikaci spustíte kliknutím na [tento odkaz](http://gjk.cz/~xlzij01/meteo/)  
+Po načtení by měla stránka vypadat následovně  
+![Alt text](screenshots/gui0.png =x500)
 
 ### Ovládání
 
 V horní části stránky vidíte aktuální hodnoty teploty, tlaku vlhkosti vzduchu, rosného bodu a pocitové teploty (zobrazuje se pouze při teplotě vyšší než 25 °C).
-První graf zobrazuje vývoj teploty (zelená plocha), tlaku (černá čára), popřípadě vlhkosti (modrá čára) za poslední 3 dny. 
-![Alt text](screenshots/chart1.png)
-V levém horním rohu lze vybrat požadovaný rozsah grafu, maximální hodnota je 1 týden.
-![Alt text](screenshots/range_selector.png)
-Pro přesnější výběr je možno použít posuvník pod grafem.
-![Alt text](screenshots/navigator.png)
-V pravém horním rohu grafu si můžete vybrat, které data budou zobrazena.
-![Alt text](screenshots/series.png)
+První graf zobrazuje vývoj teploty (zelená plocha) a tlaku (černá čára) za poslední 3 dny.  
+ 
+![Alt text](screenshots/chart1.png =x250)  
+  
+V levém horním rohu lze vybrat požadovaný rozsah grafu, maximální hodnota je 1 týden.  
+  
+![Alt text](screenshots/range_selector.png =300x)  
+
+Pro přesnější výběr je možno použít posuvník pod grafem.  
+
+![Alt text](screenshots/navigator.png =300x)  
+
+V pravém horním rohu grafu si můžete vybrat, které data budou zobrazena.  
+
+![Alt text](screenshots/series.png =300x)  
+
 
 
 ## Dokumentace pro programátory
