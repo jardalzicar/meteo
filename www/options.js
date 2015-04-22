@@ -124,6 +124,16 @@ var options1 = {
       style: {
         color: 'white'
       }
+    },
+    dateTimeLabelFormats: {
+      millisecond: '%H:%M:%S.%L',
+      second: '%H:%M:%S',
+      minute: '%H:%M',
+      hour: '%H:%M',
+      day: '%a %e. %b',
+      week: '%e. %b',
+      month: '%b \'%y',
+      year: '%Y'
     }
   },
 

@@ -13,12 +13,6 @@
         displayValues();
         setFontSize();
         setInterval(timer, 1000);
-
-        $.getJSON(phpFile, {"type":"c"}, function(data){
-          $("#t").text(temp(data)+" °C ");
-          $("#p").text(pres(data)+" HPa ");
-          $("#h").text(hum(data)+" % ");
-        });
         
         $.getJSON(phpFile, {"type":"b"}, function(data){
           var chart2 = createRangeChart(data);
