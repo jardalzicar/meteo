@@ -32,7 +32,7 @@ V levém horním rohu lze vybrat požadovaný rozsah grafu, maximální hodnota 
 Když stránku posunete dolů, naleznete zde druhý graf.
 <img src="screenshots/chart2.png" style="height: 250px;"/>
   
-Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za každý den. Možnosti nastavení jsou stejné jako u horního grafu, maximální rozsah není omezen.<br><br><br>    
+Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za každý den. Možnosti nastavení jsou stejné jako u horního grafu, maximální rozsah není omezen.<br><br>    
    
 
 ## Dokumentace pro programátory
