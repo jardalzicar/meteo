@@ -9,34 +9,28 @@ Jednoduchá meteorologická stanice založená na platformě [arduino](http://ww
 - **Autor:** Jaroslav Lžičař, <jarda.lzicar@seznam.cz>
 - **Maturitní práce 2014/15** na [GJK](https://github.com/gjkcz/gjkcz)
 
-
 ## Dokumentace pro uživatele
-
 
 ####Aplikaci spustíte kliknutím na [tento odkaz](http://gjk.cz/~xlzij01/meteo/) 
  
-Po načtení by měla stránka vypadat následovně
+Po načtení by měla stránka vypadat následovně.
 <img src="screenshots/gui0.png" style="height: 500px;"/>
 
 #### Ovládání
 
 V horní části stránky vidíte aktuální hodnoty teploty, tlaku, vlhkosti vzduchu, rosného bodu a pocitové teploty (zobrazuje se pouze při teplotě vyšší než 25 °C).
 
-
 První graf zobrazuje vývoj teploty (zelená plocha) a tlaku (černá čára) za poslední 3 dny.  
 <img src="screenshots/chart1.png" style="height: 300px;"/>  
   
 V levém horním rohu lze vybrat požadovaný rozsah grafu, maximální hodnota je 1 týden. Pro přesnější výběr je možno použít posuvník pod grafem. V pravém horním rohu grafu můžete zvolit, které data budou zobrazena.
 
-
 Když stránku posunete dolů, naleznete zde druhý graf.
 <img src="screenshots/chart2.png" style="height: 250px;"/>
   
-Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za každý den. Možnosti nastavení jsou stejné jako u horního grafu, maximální rozsah není omezen.<br><br>    
-   
+Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za každý den. Možnosti nastavení jsou stejné jako u horního grafu, maximální rozsah není omezen.   
 
 ## Dokumentace pro programátory
-
 
 #### Komponenty
 - [Arduino Uno](http://www.arduino.cc/en/Main/arduinoBoardUno)
@@ -46,7 +40,8 @@ Zelené sloupky v něm zobrazují rozdíl maximální a minimální teploty za k
 
 #### Rozmístění souborů
 
-Ve složce [senzory](senzory) se nachází soubor se zdrojovým kódem pro arduino, ve složce [www](www) naleznete všechny soubory, které jsou umístěny na serveru.
+* [senzory](senzory) - zdrojový kód pro arduino
+* [www](www) - všechny soubory, které jsou umístěny na serveru.
 
 #### Struktura kódu  
 <img src="pictures/structure.png" style="height: 250px;"/>  
