@@ -9,6 +9,7 @@
 #define ALTITUDE 281
 #define INTERVAL 60000
 #define DHTPIN A3
+#define RESETPIN 12
 
 EthernetClient client;
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x4B, 0x5F }; 
@@ -18,8 +19,11 @@ SFE_BMP180 pressure;
 DHT dht(DHTPIN, DHT22);
 String data;
 int temp, hum, pres;
+int resetTimer = 0;
   
 void setup(){
+  digitalWrite(RESETPIN, HIGH);
+  pinMode(RESETPIN, OUTPUT);
  
   Serial.begin(9600);
   pressure.begin();
@@ -40,6 +44,8 @@ void loop(){
   data =(String)"temp=" + temp + "&pres=" + pres + "&hum=" + hum + "&pass=*****";
   
   sendToServer(server, 80, data);
+
+  autoReset();
       
   //Wait between measurements
   delay(INTERVAL); 
@@ -112,6 +118,14 @@ void sendToServer(char server[], int port, String data){
 
   if (client.connected()) { 
     client.stop();	
+  }
+}
+
+// Reset arduino after 2 days
+void autoReset(){
+  resetTimer ++;
+  if(resetTimer > 2880){
+    digitalWrite(RESETPIN, LOW);  
   }
 }
 
